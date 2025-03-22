@@ -1,0 +1,8 @@
+.branch-report-table .ant-table-thead > tr > th {
+    background: #fafafa;
+    font-weight: 600;
+  }
+  .branch-report-table .ant-table-summary {
+    background: #fafafa;
+    font-weight: bold;
+  }

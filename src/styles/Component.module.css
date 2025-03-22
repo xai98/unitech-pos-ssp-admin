@@ -1,0 +1,43 @@
+.boxUploadImage{
+    width: 103px;
+    height: 100px;
+    background-color: #fbfbfb;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-style:dashed;
+    border-color: #c0c0c0;
+    border-width: thin;
+    border-radius: 6px;
+    cursor: pointer;
+  } 
+
+
+
+
+
+
+  .menuTab{
+    display: flex;
+    gap: 20px;  
+    font-size: 15px;
+    color: dimgrey;
+    border-bottom: 1px solid #e1e1e1;
+  }
+  .menuTabItem{
+    padding: 8px;
+    border-bottom: 2px solid transparent;
+    cursor: pointer;
+  }
+
+  .menuTabItem:hover{
+    color: #1976d2;
+    transition: ease-in-out 0.5s;
+    cursor: pointer;
+  }
+
+  .menuTabItemActive{
+    font-weight: bold;
+    color: #1976d2;
+    border-bottom: 2px solid #1976d2;
+  }
