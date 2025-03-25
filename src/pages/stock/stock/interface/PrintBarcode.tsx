@@ -1,4 +1,4 @@
-import { Form, InputNumber, Modal, Typography, Button, Radio } from "antd";
+import { Form, InputNumber, Modal, Typography, Button, Radio, Flex } from "antd";
 import React, {
   useCallback,
   useEffect,
@@ -172,6 +172,7 @@ const formatNumber = (num: number) => {
 
 interface PrintContentProps {
   data: {
+    id?: string;
     productName?: string;
     price_sale?: number;
     barcode?: string;
@@ -183,180 +184,118 @@ interface PrintContentProps {
 const PrintContent: React.FC<PrintContentProps> = ({
   data,
   qtyPrint,
-  columns,
+  // columns,
 }) => {
-  // Calculate barcodes configuration based on number of columns
-  // const getBarcodeConfig = () => {
-  //   switch (columns) {
-  //     case 1:
-  //       return { width: 2, height: 60, fontSize: 12 };
-  //     case 2:
-  //       return { width: 2, height: 60, fontSize: 12 };
-  //     default:
-  //       return { width: 2, height: 60, fontSize: 12 };
-  //   }
-  // };
 
-  // Calculate total rows needed based on columns
-  const totalRows = Math.ceil(qtyPrint / columns);
-  // const barcodeConfig = getBarcodeConfig();
-
-  // Create barcodes array
-  const createBarcodes = () => {
-    const result: React.ReactNode[] = [];
-    let itemCount = 0;
-
-    for (let rowIndex = 0; rowIndex < totalRows; rowIndex++) {
-      const row: React.ReactNode[] = [];
-
-      for (
-        let colIndex = 0;
-        colIndex < columns && itemCount < qtyPrint;
-        colIndex++
-      ) {
-        row.push(
-          <>
-            <div
-              key={`item-${rowIndex}-${colIndex}`}
-              style={{
-                display: "flex",
-                flexDirection: "column",
-                justifyContent: "center",
-                alignItems: "center",
-                lineHeight: "15px",
-                width: "30mm",
-                height: "20mm",
-                marginTop: "2mm",
-                marginBottom: "2mm",
-                marginRight: "2mm",
-                paddingTop: "10px",
-              }}
-            >
-              <span style={{ fontSize: 11 }}>
-                {data?.productName ? textLength(data?.productName, 25) : ""}
-              </span>
-              <span style={{ fontSize: 11 }}>
-                {formatNumber(data?.price_sale || 0)} ກີບ
-              </span>
-
-              {/* <Barcode
-              value={data?.barcode || "0000000000000"}
-              width={barcodeConfig.width}
-              height={barcodeConfig.height}
-              displayValue={true}
-              format="EAN13"
-              fontSize={barcodeConfig.fontSize}
-            /> */}
-              <img
-                alt="Barcode Generator TEC-IT"
-                src={`https://barcode.tec-it.com/barcode.ashx?data=${data?.barcode}&code=EAN13`}
-                style={{ width: "100px", height: "40px" }}
-              />
-            </div>
-
-            <div
-              key={`item-${rowIndex}-${colIndex}`}
-              style={{
-                display: "flex",
-                flexDirection: "column",
-                justifyContent: "center",
-                alignItems: "center",
-                lineHeight: "15px",
-                width: "30mm",
-                height: "20mm",
-                marginTop: "2mm",
-                marginBottom: "2mm",
-                marginRight: "2mm",
-                paddingTop: "10px",
-              }}
-            >
-              <span style={{ fontSize: 11 }}>
-                {data?.productName ? textLength(data?.productName, 25) : ""}
-              </span>
-              <span style={{ fontSize: 11 }}>
-                {formatNumber(data?.price_sale || 0)} ກີບ
-              </span>
-
-              {/* <Barcode
-              value={data?.barcode || "0000000000000"}
-              width={barcodeConfig.width}
-              height={barcodeConfig.height}
-              displayValue={true}
-              format="EAN13"
-              fontSize={barcodeConfig.fontSize}
-            /> */}
-              <img
-                alt="Barcode Generator TEC-IT"
-                src={`https://barcode.tec-it.com/barcode.ashx?data=${data?.barcode}&code=EAN13`}
-                style={{ width: "100px", height: "40px" }}
-              />
-            </div>
-
-            <div
-              key={`item-${rowIndex}-${colIndex}`}
-              style={{
-                display: "flex",
-                flexDirection: "column",
-                justifyContent: "center",
-                alignItems: "center",
-                lineHeight: "15px",
-                width: "30mm",
-                height: "20mm",
-                marginTop: "2mm",
-                marginBottom: "2mm",
-                marginRight: "2mm",
-                paddingTop: "10px",
-              }}
-            >
-              <span style={{ fontSize: 11 }}>
-                {data?.productName ? textLength(data?.productName, 25) : ""}
-              </span>
-              <span style={{ fontSize: 11 }}>
-                {formatNumber(data?.price_sale || 0)} ກີບ
-              </span>
-
-              {/* <Barcode
-              value={data?.barcode || "0000000000000"}
-              width={barcodeConfig.width}
-              height={barcodeConfig.height}
-              displayValue={true}
-              format="EAN13"
-              fontSize={barcodeConfig.fontSize}
-            /> */}
-              <img
-                alt="Barcode Generator TEC-IT"
-                src={`https://barcode.tec-it.com/barcode.ashx?data=${data?.barcode}&code=EAN13`}
-                style={{ width: "100px", height: "40px" }}
-              />
-            </div>
-          </>
-        );
-
-        itemCount++;
-      }
-
-      result.push(
-        <div
-          key={`row-${rowIndex}`}
-          style={{
-            display: "flex",
-            flexWrap: "wrap",
-            width: "100%",
-            margin: "2mm 2mm",
-          }}
-        >
-          {row}
-        </div>
-      );
-    }
-
-    return result;
-  };
 
   return (
     <div>
-      {createBarcodes()}
-    </div>
+     {Array(qtyPrint)
+          .fill(null)
+          .map((_, index) => (
+            <Flex
+              style={{
+                margin: "0mm 2mm",
+                width: "100mm",
+              }}
+              key={index}
+            >
+              <div
+                key={data?.id}
+                style={{
+                  display: "flex",
+                  flexDirection: "column",
+                  justifyContent: "center",
+                  alignItems: "center",
+                  lineHeight: "15px",
+                  width: "30mm",
+                  height: "20mm",
+                  marginTop: "2mm",
+                  marginBottom: "2mm",
+                  marginRight: "2mm",
+                  paddingTop: "10px",
+                }}
+              >
+                <span style={{ fontSize: 11 }}>
+                  {data?.productName
+                    ? textLength(data?.productName, 25)
+                    : ""}
+                </span>
+                <span style={{ fontSize: 11 }}>
+                  {formatNumber(data?.price_sale || 0)} ກີບ
+                </span>
+                <img
+                  alt="Barcode Generator TEC-IT"
+                  src={`https://barcode.tec-it.com/barcode.ashx?data=${data?.barcode}&code=EAN13`}
+                  style={{ width: "100px", height: "40px" }}
+                />
+              </div>
+
+              <div
+                key={data?.id}
+                style={{
+                  display: "flex",
+                  flexDirection: "column",
+                  justifyContent: "center",
+                  alignItems: "center",
+                  lineHeight: "15px",
+                  width: "30mm",
+                  height: "20mm",
+                  marginTop: "2mm",
+                  marginLeft: "2mm",
+                  marginRight: "2mm",
+                  marginBottom: "2mm",
+                  paddingTop: "10px",
+                }}
+              >
+                <span style={{ fontSize: 11 }}>
+                  {data?.productName
+                    ? textLength(data?.productName, 25)
+                    : ""}
+                </span>
+                <span style={{ fontSize: 11 }}>
+                  {formatNumber(data?.price_sale || 0)} ກີບ
+                </span>
+                <img
+                  alt="Barcode Generator TEC-IT"
+                  src={`https://barcode.tec-it.com/barcode.ashx?data=${data?.barcode}&code=EAN13`}
+                  style={{ width: "100px", height: "40px" }}
+                />
+              </div>
+
+              <div
+                key={data?.id}
+                style={{
+                  display: "flex",
+                  flexDirection: "column",
+                  justifyContent: "center",
+                  alignItems: "center",
+                  lineHeight: "15px",
+                  width: "30mm",
+                  height: "20mm",
+                  marginTop: "2mm",
+                  marginBottom: "2mm",
+                  marginLeft: "2mm",
+                  paddingTop: "10px",
+                }}
+              >
+                <span style={{ fontSize: 11 }}>
+                  {data?.productName
+                    ? textLength(data?.productName, 25)
+                    : ""}
+                </span>
+                <span style={{ fontSize: 11 }}>
+                  {formatNumber(data?.price_sale || 0)} ກີບ
+                </span>
+                <img
+                  alt="Barcode Generator TEC-IT"
+                  src={`https://barcode.tec-it.com/barcode.ashx?data=${data?.barcode}&code=EAN13`}
+                  style={{ width: "100px", height: "40px" }}
+                />
+              </div>
+            </Flex>
+          ))}
+      </div>
   );
 };
 
