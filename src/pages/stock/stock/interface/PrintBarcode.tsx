@@ -171,8 +171,18 @@ const PrintContent: React.FC<{
           <div 
             key={`item-${rowIndex}-${colIndex}`} 
             style={{ 
-              width: `${100 / columns}%`,
-              padding: "2mm",
+              // width: `${100 / columns}%`,
+              display:"flex",
+              flexDirection:"column",
+              justifyContent:'center',
+              alignItems:"center",
+              width: '30mm',
+              height:"20mm",
+              marginTop:"2mm",
+              marginBottom:"2mm",
+              marginLeft:"2mm",
+              marginRight:"2mm",
+              padding: "10px",
               boxSizing: "border-box",
               textAlign: "center",
               lineHeight:'10px'
@@ -185,7 +195,7 @@ const PrintContent: React.FC<{
             <Barcode
               value={data?.barcode || "0000000000000"}
               width={columns === 1 ? 1 : columns === 2 ? 1 : 1}
-              height={columns === 1 ? 35 : columns === 2 ? 35 : 35}
+              height={columns === 1 ? 2 : columns === 2 ? 35 : 35}
               displayValue={true}
               format="EAN13"
               fontSize={columns === 1 ? 12 : columns === 2 ? 10 : 10}
@@ -204,8 +214,10 @@ const PrintContent: React.FC<{
           style={{ 
             display: "flex", 
             flexWrap: "nowrap",
-            width: "100%",
-            margin: "2mm"
+            // width: "100%",
+            width: `${100 / columns}%`,
+            margin: "0mm 2mm"
+            // padding: "2mm"
           }}
         >
           {row}
