@@ -205,7 +205,7 @@ const PrintContent: React.FC<{
             display: "flex", 
             flexWrap: "nowrap",
             width: "100%",
-            // marginBottom: "5mm"
+            marginBottom: "2mm"
           }}
         >
           {row}
