@@ -311,17 +311,17 @@ const PrintContent: React.FC<PrintContentProps> = ({
               flexDirection: "column",
               justifyContent: "center",
               alignItems: "center",
-              // width: "3cm",
-              // height: "2cm",
+              width: "30mm",
+              height: "25mm",
               marginTop: "2mm",
               marginBottom: "2mm",
               marginLeft: "2mm",
               marginRight: "2mm",
               // width: `${100 / columns}%`,
-              width: `100%`,
+              // width: `100%`,
               margin: "2mm",
               padding: "10px",
-              // lineHeight: "10px",
+              lineHeight: "10px",
             }}
           >
             <div style={{ fontWeight: "500", fontSize: "12px" }}>
@@ -354,7 +354,8 @@ const PrintContent: React.FC<PrintContentProps> = ({
           style={{
             display: "flex",
             flexWrap: "nowrap",
-            // width: "100%",
+            width: "100mm",
+            margin:"0mm 2mm"
           }}
         >
           {row}
