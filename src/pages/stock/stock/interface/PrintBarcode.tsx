@@ -1,8 +1,15 @@
 import { Form, InputNumber, Modal, Typography, Button, Radio } from "antd";
-import React, { useCallback, useEffect, useMemo, useRef, useState } from "react";
+import React, {
+  useCallback,
+  useEffect,
+  useMemo,
+  useRef,
+  useState,
+} from "react";
 import Barcode from "react-barcode";
 import ReactToPrint from "react-to-print";
-import { formatNumber, textLength } from "../../../../utils/helper";
+
+// import { formatNumber, textLength } from "../../../../utils/helper";
 import { PrinterOutlined } from "@ant-design/icons";
 
 const { Text, Title } = Typography;
@@ -35,28 +42,31 @@ const PrintBarcode: React.FC<Props> = ({ open, onClose, data }) => {
   }, [form, onClose]);
 
   // Create a single barcode preview
-  const singleBarcodePreview = useMemo(() => (
-    <div style={{ textAlign: "center", marginBottom: 16 }}>
-      <Text strong>{data?.productName || "-"}</Text>
-      <div style={{ margin: "4px 0" }}>
-        <Text>{formatNumber(data?.price_sale || 0)} ກີບ</Text>
+  const singleBarcodePreview = useMemo(
+    () => (
+      <div style={{ textAlign: "center", marginBottom: 16 }}>
+        <Text strong>{data?.productName || "-"}</Text>
+        <div style={{ margin: "4px 0" }}>
+          <Text>{formatNumber(data?.price_sale || 0)} ກີບ</Text>
+        </div>
+        <Barcode
+          value={data?.barcode || "0000000000000"}
+          width={2}
+          height={80}
+          displayValue={true}
+          format="EAN13"
+          fontSize={14}
+        />
       </div>
-      <Barcode
-        value={data?.barcode || "0000000000000"}
-        width={2}
-        height={80}
-        displayValue={true}
-        format="EAN13"
-        fontSize={14}
-      />
-    </div>
-  ), [data]);
+    ),
+    [data]
+  );
 
   // Update formValues whenever form values change
-  const handleValuesChange = (_:any, allValues:any) => {
+  const handleValuesChange = (_: any, allValues: any) => {
     setFormValues(allValues);
   };
-  
+
   // Function to handle print - ensures we have latest values
   const handlePrint = () => {
     // Get the latest form values before printing
@@ -76,9 +86,9 @@ const PrintBarcode: React.FC<Props> = ({ open, onClose, data }) => {
     >
       {singleBarcodePreview}
 
-      <Form 
-        form={form} 
-        layout="vertical" 
+      <Form
+        form={form}
+        layout="vertical"
         initialValues={{ qtyPrint: 1, columns: 3 }}
         onValuesChange={handleValuesChange}
       >
@@ -94,13 +104,15 @@ const PrintBarcode: React.FC<Props> = ({ open, onClose, data }) => {
             size="large"
             placeholder="ປ້ອນຈຳນວນ"
             style={{ width: "100%" }}
-            formatter={(value) => `${value}`.replace(/\B(?=(\d{3})+(?!\d))/g, ",")}
-            parser={(value) => value ? Number(value.replace(/\D/g, "")) : 0}
+            formatter={(value) =>
+              `${value}`.replace(/\B(?=(\d{3})+(?!\d))/g, ",")
+            }
+            parser={(value) => (value ? Number(value.replace(/\D/g, "")) : 0)}
           />
         </Form.Item>
 
-        <Form.Item 
-          name="columns" 
+        <Form.Item
+          name="columns"
           label="ຈຳນວນຖັນ"
           rules={[{ required: true, message: "ກະລຸນາເລືອກຈຳນວນຖັນ" }]}
         >
@@ -135,10 +147,10 @@ const PrintBarcode: React.FC<Props> = ({ open, onClose, data }) => {
 
       <div style={{ display: "none" }}>
         <div ref={printComponentRef}>
-          <PrintContent 
-            data={data} 
+          <PrintContent
+            data={data}
             qtyPrint={formValues.qtyPrint}
-            columns={formValues.columns} 
+            columns={formValues.columns}
           />
         </div>
       </div>
@@ -147,87 +159,212 @@ const PrintBarcode: React.FC<Props> = ({ open, onClose, data }) => {
 };
 
 // Separate print content component
-const PrintContent: React.FC<{ 
-  data: any; 
+// const PrintContent: React.FC<{
+//   data: any;
+//   qtyPrint: number;
+//   columns: number;
+// }> = ({ data, qtyPrint, columns }) => {
+//   console.log("PrintContent rendering with columns:", columns, "and quantity:", qtyPrint);
+
+//   // Calculate total rows needed based on columns
+//   const totalRows = Math.ceil(qtyPrint / columns);
+
+//   // Create barcodes array
+//   const createBarcodes = () => {
+//     const result = [];
+//     let itemCount = 0;
+
+//     for (let rowIndex = 0; rowIndex < totalRows; rowIndex++) {
+//       const row = [];
+
+//       // Add exactly the number of columns specified or remaining items
+//       for (let colIndex = 0; colIndex < columns && itemCount < qtyPrint; colIndex++) {
+//         row.push(
+//           <div
+//             key={`item-${rowIndex}-${colIndex}`}
+//             style={{
+//               // width: `${100 / columns}%`,
+//               display:"flex",
+//               flexDirection:"column",
+//               justifyContent:'center',
+//               alignItems:"center",
+//               width: '30mm',
+//               height:"20mm",
+//               marginTop:"2mm",
+//               marginBottom:"2mm",
+//               marginLeft:"2mm",
+//               marginRight:"2mm",
+//               padding: "10px",
+//               boxSizing: "border-box",
+//               textAlign: "center",
+//               lineHeight:'10px'
+//             }}
+//           >
+//             <div style={{ fontWeight: "bold", fontSize:"10px"}}>
+//               {data?.productName ? textLength(data.productName, columns === 1 ? 40 : columns === 2 ? 25 : 20) : "-"}
+//               <div>{formatNumber(data?.price_sale || 0)} ກີບ</div>
+//             </div>
+//             <Barcode
+//               value={data?.barcode || "0000000000000"}
+//               width={columns === 1 ? 2 : columns === 2 ? 1.5 : 2}
+//               height={columns === 1 ? 70 : columns === 2 ? 70 : 70}
+//               displayValue={true}
+//               format="EAN13"
+//               fontSize={columns === 1 ? 15 : columns === 2 ? 15 : 15}
+//               // margin={5}
+//             />
+
+//           </div>
+//         );
+
+//         itemCount++;
+//       }
+
+//       result.push(
+//         <div
+//           key={`row-${rowIndex}`}
+//           style={{
+//             display: "flex",
+//             flexWrap: "nowrap",
+//             width: "100%",
+//             // width: `${100 / columns}%`,
+//             // margin: "0mm 2mm"
+//             // padding: "2mm"
+//           }}
+//         >
+//           {row}
+//         </div>
+//       );
+//     }
+
+//     return result;
+//   };
+
+//   return (
+//     <div style={{ width: "100%", padding: "10px", boxSizing: "border-box" }}>
+//       {createBarcodes()}
+//     </div>
+//   );
+// };
+
+// Utility function to truncate text based on columns
+const textLength = (text: string, maxLength: number) => {
+  return text && text.length > maxLength
+    ? text.substring(0, maxLength) + "..."
+    : text;
+};
+
+// Utility function to format number with thousand separators
+const formatNumber = (num: number) => {
+  return num.toLocaleString("en-US");
+};
+
+interface PrintContentProps {
+  data: {
+    productName?: string;
+    price_sale?: number;
+    barcode?: string;
+  };
   qtyPrint: number;
   columns: number;
-}> = ({ data, qtyPrint, columns }) => {
-  console.log("PrintContent rendering with columns:", columns, "and quantity:", qtyPrint);
-  
+}
+
+const PrintContent: React.FC<PrintContentProps> = ({
+  data,
+  qtyPrint,
+  columns,
+}) => {
+  // Calculate barcodes configuration based on number of columns
+  const getBarcodeConfig = () => {
+    switch (columns) {
+      case 1:
+        return { width: 1.5, height: 60, fontSize: 12 };
+      case 2:
+        return { width: 1.5, height: 60, fontSize: 12 };
+      default:
+        return { width: 1.5, height: 60, fontSize: 12 };
+    }
+  };
+
   // Calculate total rows needed based on columns
   const totalRows = Math.ceil(qtyPrint / columns);
-  
+  const barcodeConfig = getBarcodeConfig();
+
   // Create barcodes array
   const createBarcodes = () => {
-    const result = [];
+    const result: React.ReactNode[] = [];
     let itemCount = 0;
-    
+
     for (let rowIndex = 0; rowIndex < totalRows; rowIndex++) {
-      const row = [];
-      
-      // Add exactly the number of columns specified or remaining items
-      for (let colIndex = 0; colIndex < columns && itemCount < qtyPrint; colIndex++) {
+      const row: React.ReactNode[] = [];
+
+      for (
+        let colIndex = 0;
+        colIndex < columns && itemCount < qtyPrint;
+        colIndex++
+      ) {
         row.push(
-          <div 
-            key={`item-${rowIndex}-${colIndex}`} 
-            style={{ 
+          <div
+            key={`item-${rowIndex}-${colIndex}`}
+            style={{
+              display: "flex",
+              flexDirection: "column",
+              justifyContent: "center",
+              alignItems: "center",
+              // width: "3cm",
+              // height: "2cm",
+              marginTop: "2mm",
+              marginBottom: "2mm",
+              marginLeft: "2mm",
+              marginRight: "2mm",
               // width: `${100 / columns}%`,
-              display:"flex",
-              flexDirection:"column",
-              justifyContent:'center',
-              alignItems:"center",
-              width: '30mm',
-              height:"20mm",
-              marginTop:"2mm",
-              marginBottom:"2mm",
-              marginLeft:"2mm",
-              marginRight:"2mm",
+              width: `100%`,
+              margin: "2mm",
               padding: "10px",
-              boxSizing: "border-box",
-              textAlign: "center",
-              lineHeight:'10px'
+              // lineHeight: "10px",
             }}
           >
-            <div style={{ fontWeight: "bold", fontSize:"10px"}}>
-              {data?.productName ? textLength(data.productName, columns === 1 ? 40 : columns === 2 ? 25 : 20) : "-"}
+            <div style={{ fontWeight: "500", fontSize: "12px" }}>
+              {data?.productName
+                ? textLength(
+                    data.productName,
+                    columns === 1 ? 40 : columns === 2 ? 25 : 20
+                  )
+                : "-"}
               <div>{formatNumber(data?.price_sale || 0)} ກີບ</div>
             </div>
+
             <Barcode
               value={data?.barcode || "0000000000000"}
-              width={columns === 1 ? 2 : columns === 2 ? 1.5 : 2}
-              height={columns === 1 ? 70 : columns === 2 ? 70 : 70}
+              width={barcodeConfig.width}
+              height={barcodeConfig.height}
               displayValue={true}
               format="EAN13"
-              fontSize={columns === 1 ? 15 : columns === 2 ? 15 : 15}
-              // margin={5}
+              fontSize={barcodeConfig.fontSize}
             />
-           
           </div>
         );
-        
+
         itemCount++;
       }
-      
+
       result.push(
-        <div 
-          key={`row-${rowIndex}`} 
-          style={{ 
-            display: "flex", 
+        <div
+          key={`row-${rowIndex}`}
+          style={{
+            display: "flex",
             flexWrap: "nowrap",
-            width: "100%",
-            // width: `${100 / columns}%`,
-            // margin: "0mm 2mm"
-            // padding: "2mm"
+            // width: "100%",
           }}
         >
           {row}
         </div>
       );
     }
-    
+
     return result;
   };
-  
+
   return (
     <div style={{ width: "100%", padding: "10px", boxSizing: "border-box" }}>
       {createBarcodes()}

@@ -907,6 +907,49 @@
   resolved "https://registry.yarnpkg.com/@rollup/rollup-win32-x64-msvc/-/rollup-win32-x64-msvc-4.19.1.tgz#5f2c40d3f1b53ede80fb4e6964f840c0f8936832"
   integrity sha512-2bIrL28PcK3YCqD9anGxDxamxdiJAxA+l7fWIwM5o8UqNy1t3d1NdAweO2XhA0KTDJ5aH1FsuiT5+7VhtHliXg==
 
+"@syncfusion/ej2-barcode-generator@28.2.12":
+  version "28.2.12"
+  resolved "https://registry.yarnpkg.com/@syncfusion/ej2-barcode-generator/-/ej2-barcode-generator-28.2.12.tgz#ac4a03a067f45834740c94d65d50cd565f9c291d"
+  integrity sha512-t+eoTaPtN1eW13UEl+PfYMAQ/An9aO9xH8Mo983QQF7jO7Ffv8YNHHALGeB9E3QsXkKjTDw6hVttPGd+kxpACw==
+  dependencies:
+    "@syncfusion/ej2-base" "~28.2.12"
+    "@syncfusion/ej2-data" "~28.2.12"
+
+"@syncfusion/ej2-base@~28.2.12", "@syncfusion/ej2-base@~28.2.5":
+  version "28.2.12"
+  resolved "https://registry.yarnpkg.com/@syncfusion/ej2-base/-/ej2-base-28.2.12.tgz#fee04d2432bfc436cadb76191ee01f364629a3d0"
+  integrity sha512-7PYRBbWkfhnO1rV4jO+364URC28uX/53fPHOe1dIRmlEMZPb5vy3JIPjgcs4CoJei4QtKeOLzMhWtFS7skxscQ==
+  dependencies:
+    "@syncfusion/ej2-icons" "~28.2.3"
+
+"@syncfusion/ej2-data@~28.2.12":
+  version "28.2.12"
+  resolved "https://registry.yarnpkg.com/@syncfusion/ej2-data/-/ej2-data-28.2.12.tgz#aa6f9d22382032d219a613dc0f3f57357ac620cd"
+  integrity sha512-U4M45XfZGdlZXCb0tcsHXY3ihg5OjDJi+KG5TdNj62JknxWXV6UTx0WupztZnuGQ3DsSYyBt7X293de8cG6tcA==
+  dependencies:
+    "@syncfusion/ej2-base" "~28.2.12"
+
+"@syncfusion/ej2-icons@~28.2.3":
+  version "28.2.3"
+  resolved "https://registry.yarnpkg.com/@syncfusion/ej2-icons/-/ej2-icons-28.2.3.tgz#5a8e0fa3e90d2712937b681cbefb34e71f1c34ca"
+  integrity sha512-lwDMbygU3y15jLkTCtvFb7dwfEtOVknjajYWnp+wmCJF14ZUwDEBuY1jCcpDcEd6mHkDdS5GFlpifdjZhh9jJA==
+
+"@syncfusion/ej2-react-barcode-generator@^28.2.12":
+  version "28.2.12"
+  resolved "https://registry.yarnpkg.com/@syncfusion/ej2-react-barcode-generator/-/ej2-react-barcode-generator-28.2.12.tgz#7539a0fcb37dd9c82f967fb1cd3ab7bfd4e660e8"
+  integrity sha512-MSTngkGe2q7cQQEkGQwN8NeZtpCK+Np4j9pXKenHSEm1CvHcUtuJOyoqNfUKbZ6CGsRnEOSa8iw0+qyxfaCJSg==
+  dependencies:
+    "@syncfusion/ej2-barcode-generator" "28.2.12"
+    "@syncfusion/ej2-base" "~28.2.12"
+    "@syncfusion/ej2-react-base" "~28.2.7"
+
+"@syncfusion/ej2-react-base@~28.2.7":
+  version "28.2.7"
+  resolved "https://registry.yarnpkg.com/@syncfusion/ej2-react-base/-/ej2-react-base-28.2.7.tgz#34223d8309ddbdca93eb4d9763e314ec1d846df9"
+  integrity sha512-SWZ26XO6kF9p2MNpUnj6fUozy4p/XMnQOAdlxCnjxh3JuphCQ/Sd1sUOUHdANuLIy7e3lohOGzdfxq4yYnxgsg==
+  dependencies:
+    "@syncfusion/ej2-base" "~28.2.5"
+
 "@types/babel__core@^7.20.5":
   version "7.20.5"
   resolved "https://registry.yarnpkg.com/@types/babel__core/-/babel__core-7.20.5.tgz#3df15f27ba85319caa07ba08d0721889bb39c017"
