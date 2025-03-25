@@ -188,17 +188,17 @@ const PrintContent: React.FC<{
               lineHeight:'10px'
             }}
           >
-            <div style={{ fontWeight: "bold", fontSize:10}}>
+            <div style={{ fontWeight: "bold", fontSize:"10px"}}>
               {data?.productName ? textLength(data.productName, columns === 1 ? 40 : columns === 2 ? 25 : 20) : "-"}
               <div>{formatNumber(data?.price_sale || 0)} ກີບ</div>
             </div>
             <Barcode
               value={data?.barcode || "0000000000000"}
-              width={columns === 1 ? 1 : columns === 2 ? 1 : 1}
-              height={columns === 1 ? 2 : columns === 2 ? 35 : 35}
+              width={columns === 1 ? 2 : columns === 2 ? 1.5 : 2}
+              height={columns === 1 ? 70 : columns === 2 ? 70 : 70}
               displayValue={true}
               format="EAN13"
-              fontSize={columns === 1 ? 12 : columns === 2 ? 10 : 10}
+              fontSize={columns === 1 ? 15 : columns === 2 ? 15 : 15}
               // margin={5}
             />
            
@@ -214,9 +214,9 @@ const PrintContent: React.FC<{
           style={{ 
             display: "flex", 
             flexWrap: "nowrap",
-            // width: "100%",
-            width: `${100 / columns}%`,
-            margin: "0mm 2mm"
+            width: "100%",
+            // width: `${100 / columns}%`,
+            // margin: "0mm 2mm"
             // padding: "2mm"
           }}
         >

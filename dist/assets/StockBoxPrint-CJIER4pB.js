@@ -1,4 +1,4 @@
-import{e as h,d as a,j as i,l as m}from"./index-DrwIm36-.js";const g=a.div`
+import{e as h,d as a,j as i,l as m}from"./index-BT7rfDmA.js";const g=a.div`
   font-family: "Phetsarath OT", sans-serif;
   padding: 15px;
   border: 1px solid #000;
