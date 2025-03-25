@@ -175,6 +175,7 @@ const PrintContent: React.FC<{
               padding: "2mm",
               boxSizing: "border-box",
               textAlign: "center",
+              lineHeight:'10px'
             }}
           >
             <div style={{ fontWeight: "bold", fontSize:10}}>
@@ -184,7 +185,7 @@ const PrintContent: React.FC<{
             <Barcode
               value={data?.barcode || "0000000000000"}
               width={columns === 1 ? 1 : columns === 2 ? 1 : 1}
-              height={columns === 1 ? 50 : columns === 2 ? 50 : 50}
+              height={columns === 1 ? 30 : columns === 2 ? 20 : 30}
               displayValue={true}
               format="EAN13"
               fontSize={columns === 1 ? 12 : columns === 2 ? 10 : 10}
