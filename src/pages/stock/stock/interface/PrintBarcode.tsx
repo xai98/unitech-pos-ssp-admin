@@ -275,20 +275,20 @@ const PrintContent: React.FC<PrintContentProps> = ({
   columns,
 }) => {
   // Calculate barcodes configuration based on number of columns
-  const getBarcodeConfig = () => {
-    switch (columns) {
-      case 1:
-        return { width: 1.5, height: 60, fontSize: 12 };
-      case 2:
-        return { width: 1.5, height: 60, fontSize: 12 };
-      default:
-        return { width: 1.5, height: 60, fontSize: 12 };
-    }
-  };
+  // const getBarcodeConfig = () => {
+  //   switch (columns) {
+  //     case 1:
+  //       return { width: 2, height: 60, fontSize: 12 };
+  //     case 2:
+  //       return { width: 2, height: 60, fontSize: 12 };
+  //     default:
+  //       return { width: 2, height: 60, fontSize: 12 };
+  //   }
+  // };
 
   // Calculate total rows needed based on columns
   const totalRows = Math.ceil(qtyPrint / columns);
-  const barcodeConfig = getBarcodeConfig();
+  // const barcodeConfig = getBarcodeConfig();
 
   // Create barcodes array
   const createBarcodes = () => {
@@ -311,36 +311,34 @@ const PrintContent: React.FC<PrintContentProps> = ({
               flexDirection: "column",
               justifyContent: "center",
               alignItems: "center",
+              lineHeight: "15px",
               width: "30mm",
-              height: "25mm",
+              height: "20mm",
               marginTop: "2mm",
               marginBottom: "2mm",
-              marginLeft: "2mm",
               marginRight: "2mm",
-              // width: `${100 / columns}%`,
-              // width: `100%`,
-              margin: "2mm",
-              padding: "10px",
-              lineHeight: "10px",
+              paddingTop: "10px",
             }}
           >
-            <div style={{ fontWeight: "500", fontSize: "12px" }}>
-              {data?.productName
-                ? textLength(
-                    data.productName,
-                    columns === 1 ? 40 : columns === 2 ? 25 : 20
-                  )
-                : "-"}
-              <div>{formatNumber(data?.price_sale || 0)} ກີບ</div>
-            </div>
+            <span style={{ fontSize: 11 }}>
+              {data?.productName ? textLength(data?.productName, 25) : ""}
+            </span>
+            <span style={{ fontSize: 11 }}>
+              {formatNumber(data?.price_sale || 0)} ກີບ
+            </span>
 
-            <Barcode
+            {/* <Barcode
               value={data?.barcode || "0000000000000"}
               width={barcodeConfig.width}
               height={barcodeConfig.height}
               displayValue={true}
               format="EAN13"
               fontSize={barcodeConfig.fontSize}
+            /> */}
+            <img
+              alt="Barcode Generator TEC-IT"
+              src={`https://barcode.tec-it.com/barcode.ashx?data=${data?.barcode}&code=EAN13`}
+              style={{ width: "100px", height: "40px" }}
             />
           </div>
         );
@@ -355,7 +353,7 @@ const PrintContent: React.FC<PrintContentProps> = ({
             display: "flex",
             flexWrap: "nowrap",
             width: "100mm",
-            margin:"0mm 2mm"
+            margin: "0mm 2mm",
           }}
         >
           {row}
