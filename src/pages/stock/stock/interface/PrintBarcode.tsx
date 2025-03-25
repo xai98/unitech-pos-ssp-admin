@@ -172,7 +172,7 @@ const PrintContent: React.FC<{
             key={`item-${rowIndex}-${colIndex}`} 
             style={{ 
               width: `${100 / columns}%`,
-              // padding: "2mm",
+              padding: "2mm",
               boxSizing: "border-box",
               textAlign: "center",
               lineHeight:'10px'
@@ -205,7 +205,7 @@ const PrintContent: React.FC<{
             display: "flex", 
             flexWrap: "nowrap",
             width: "100%",
-            marginBottom: "2mm"
+            margin: "2mm"
           }}
         >
           {row}
