@@ -54,7 +54,6 @@ const CreateStaffAdmin: React.FC<Props> = ({
   }, [data, editMode, form]);
 
   const onFinish = async (value: any) => {
-    console.log(value);
 
     const dataForm = {
       ...value,

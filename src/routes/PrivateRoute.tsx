@@ -55,7 +55,6 @@ const PrivateRoute: React.FC = () => {
   };
 
   const handleMenu = (route?: string) => {
-    console.log("object", route);
 
     if (route) {
       navigate(route, { replace: true });

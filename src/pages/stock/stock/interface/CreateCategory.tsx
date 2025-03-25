@@ -49,8 +49,6 @@ const CreateCategory: React.FC<Props> = ({
   }, [data, editMode, form]);
 
   const onFinish: FormProps["onFinish"] = async (values) => {
-    console.log(values);
-
     try {
       if (editMode) {
         const result = await updateData({

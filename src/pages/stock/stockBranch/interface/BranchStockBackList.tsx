@@ -468,7 +468,7 @@ const BranchStockBackList: React.FC<Props> = ({ selectBranch }) => {
   return (
     <Container>
       <Header>
-        <Title>ສະຕ໋ອກສາຂາ</Title>
+        <Title>ສະຕ໋ອກຫຼັງບ້ານ</Title>
         <ActionButton onClick={() => setIsExport(true)}>
           Export to Excel
         </ActionButton>

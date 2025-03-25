@@ -72,7 +72,7 @@ export const StatsCards = ({ reportOrder, reportChange, totalStockLow,totalChang
       <Col xs={24} sm={12} md={4}>
         <StatCard style={{ position: 'relative' }}>
           <Statistic 
-            title="ສະຕ໋ອກສິນຄ້າສາຂາໃກ້ຈະໝົດ" 
+            title="ຈ/ນສິນຄ້າຂາຍໜ້າຮ້ານໃກ້ໝົດ" 
             value={totalStockLow || 0} 
             formatter={safeFormatNumber}
             style={{ marginBottom: 15 }}

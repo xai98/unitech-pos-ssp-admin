@@ -174,7 +174,7 @@ function StockLowsList() {
             ),
           },
           {
-            title: "ລາຍການສິນຄ້າໃກ້ໝົດ",
+            title: "ລາຍການສິນຄ້າຂາຍໜ້າໃກ້ໝົດ",
           },
         ]}
       />
@@ -182,7 +182,7 @@ function StockLowsList() {
       <div style={{ height: 10 }}></div>
 
       <BoxContainer>
-        <TextHeader>ຂໍ້ມູນສິນຄ້າທີ່ໃກ້ຈະໝົດ</TextHeader>
+        <TextHeader>ລາຍການສິນຄ້າຂາຍໜ້າໃກ້ໝົດ</TextHeader>
         <div style={{ height: 10 }}></div>
 
         <Row gutter={10}>

@@ -57,6 +57,17 @@ export const UPDATE_NOTI_QTY_LOW_MANY = gql`
   }
 `;
 
+export const UPDATE_NOTI_QTY_LOW_MANY_SALE_POS = gql`
+  mutation UpdateNotiQtyLowManySalePOSProduct(
+    $data: ProductInput!
+    $where: ProductWhereInputOne!
+  ) {
+    updateNotiQtyLowManySalePOSProduct(data: $data, where: $where) {
+      id
+    }
+  }
+`;
+
 export const GET_PRODUCTS = gql`
   query Products(
     $where: ProductWhereInput
@@ -109,6 +120,7 @@ export const GET_PRODUCT_BY_ID = gql`
       isCommission
       commission
       notiQty
+      notiQtyPOS
       isShowSale
       isCreatedStock
       createdBy

@@ -48,7 +48,7 @@ const HeaderTitle = styled.h1`
 `;
 
 const SiderWrapper = styled(Layout.Sider)`
-  background: #ffffff;
+  background: #ffffff !important;
   border-right: 1px solid #e8ecef;
   .ant-layout-sider-children {
     display: flex;
@@ -141,14 +141,14 @@ const view: Record<MenuKey, React.FC<ViewProps>> = {
 };
 
 const menuItems = [
-  { key: "LIST_STOCK", icon: <MdPointOfSale />, label: "ສິນຄ້າໜ້າຂາຍ" },
+  { key: "LIST_STOCK", icon: <MdPointOfSale />, label: "ສິນຄ້າໜ້າຂາຍໜ້າຮ້ານ" },
   { key: "BRANCH_STOCK_LIST", icon: <AiFillProduct />, label: "ສະຕ໋ອກຫຼັງບ້ານ" },
-  { key: "ADD_BRANCH_STOCK", icon: <IoIosAddCircleOutline />, label: "ເພີ່ມສະຕ໋ອກຫຼັງ" },
-  { key: "ADD_STOCK", icon: <IoIosAddCircleOutline />, label: "ເພີ່ມສະຕ໋ອກໜ້າ" },
+  { key: "ADD_BRANCH_STOCK", icon: <IoIosAddCircleOutline />, label: "ເພີ່ມສະຕ໋ອກຫຼັງບ້ານ" },
+  { key: "ADD_STOCK", icon: <IoIosAddCircleOutline />, label: "ເພີ່ມສະຕ໋ອກຂາຍໜ້າຮ້ານ" },
   { key: "HISTORY_BRANCH_STOCK", icon: <FaHistory />, label: "ປະຫວັດສະຕ໋ອກຫຼັງບ້ານ" },
   { key: "HISTORY_STOCK", icon: <FaHistory />, label: "ປະຫວັດສະຕ໋ອກຂາຍໜ້າຮ້ານ" },
-  { key: "STOCK_LOWS", icon: <AiOutlineProduct />, label: "ສິນຄ້າໜ້າຂາຍໃກ້ໝົດ" },
-  { key: "BRANCH_STOCK_LOWS", icon: <AiOutlineProduct />, label: "ສິນຄ້າໜ້າສາຂາໃກ້ໝົດ" },
+  { key: "STOCK_LOWS", icon: <AiOutlineProduct />, label: "ສິນຄ້າຂາຍໜ້າຮ້ານໃກ້ໝົດ" },
+  { key: "BRANCH_STOCK_LOWS", icon: <AiOutlineProduct />, label: "ສະຕ໋ອກຫຼັງບ້ານໃກ້ໝົດ" },
 ];
 
 const StockBranchPage: React.FC = () => {

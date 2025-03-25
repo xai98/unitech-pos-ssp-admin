@@ -138,9 +138,9 @@ function ExchangePage() {
                 />
               </Form>
               <div style={{ height: 20 }}></div>
-              <div>
+              {/* <div>
                 ຊື່ຜູ້ແກ້ໄຂລ່າສຸດ: {exchangeData?.exchangeRate?.updatedBy}
-              </div>
+              </div> */}
               <div>
                 ວັນທີອັບເດດລ່າສຸດ:{" "}
                 {formatDate(exchangeData?.exchangeRate?.updatedAt)}

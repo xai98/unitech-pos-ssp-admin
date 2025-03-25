@@ -143,11 +143,11 @@ const StockLowsBranch: React.FC<Props> = ({ selectBranch }) => {
       borderRadius: 12,
       boxShadow: "0 4px 6px rgba(0, 0, 0, 0.1)",
     }}>
-      <Title level={4} style={{ color: "#2E93fA", marginBottom: 24 }}>
-        ຂໍ້ມູນສິນຄ້າທີ່ໃກ້ຈະໝົດ
+      <Title level={4} style={{ color: "#2E93fA", margin:0 }}>
+      ສິນຄ້າຂາຍໜ້າຮ້ານໃກ້ໝົດ
       </Title>
 
-      <Row gutter={[16, 16]} style={{ marginBottom: 24 }}>
+      <Row gutter={[16, 16]} style={{ marginBottom: 24,marginTop:10 }}>
         <Col xs={24} md={12} lg={8}>
           <Input.Search
             placeholder="ຄົ້ນຫາຕາມຊື່ສິນຄ້າ..."

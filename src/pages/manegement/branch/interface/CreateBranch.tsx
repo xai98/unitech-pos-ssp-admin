@@ -46,7 +46,6 @@ const CreateBranch: React.FC<Props> = ({
   }, [data, editMode, form]);
 
   const onFinish: FormProps["onFinish"] = async (values) => {
-    console.log(values);
 
     try {
       if (editMode) {

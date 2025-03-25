@@ -235,7 +235,7 @@ const AddStockBranchBack: React.FC<Props> = ({ selectBranch }) => {
               title={
                 <Flex justify="space-between" align="center">
                   <Space>
-                    <span style={{ fontSize: 18 }}>ຈັດການສິນຄ້າສະຕ໋ອກຮ້ານ</span>
+                    <span style={{ fontSize: 18 }}>ເພີ່ມສະຕ໋ອກຫຼັງບ້ານ</span>
                   </Space>
                   <ButtonAction
                     size="middle"

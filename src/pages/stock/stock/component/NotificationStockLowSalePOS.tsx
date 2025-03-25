@@ -1,7 +1,7 @@
 import { Card, Form, InputNumber, Button, Typography, message } from "antd";
 import React, { useCallback, useEffect } from "react";
 import { useMutation } from "@apollo/client";
-import { UPDATE_NOTI_QTY_LOW_MANY } from "../../../../services";
+import { UPDATE_NOTI_QTY_LOW_MANY_SALE_POS } from "../../../../services";
 import { CheckOutlined } from "@ant-design/icons";
 
 const { Text } = Typography;
@@ -10,15 +10,15 @@ interface Props {
   product: any;
 }
 
-const NotificationStockLow: React.FC<Props> = ({ product }) => {
+const NotificationStockLowSalePOS: React.FC<Props> = ({ product }) => {
   const [form] = Form.useForm();
-  const [updateProduct, { loading }] = useMutation(UPDATE_NOTI_QTY_LOW_MANY);
+  const [updateProduct, { loading }] = useMutation(UPDATE_NOTI_QTY_LOW_MANY_SALE_POS);
 
   // Sync form with product data
   useEffect(() => {
     if (product) {
       form.setFieldsValue({
-        notiQty: product.notiQty || 0,
+        notiQtyPOS: product.notiQtyPOS || 0,
       });
     }
   }, [product, form]);
@@ -26,12 +26,15 @@ const NotificationStockLow: React.FC<Props> = ({ product }) => {
   // Handle form submission
   const handleSave = useCallback(async () => {
     try {
-      const { notiQty } = await form.validateFields();
-      const updatedNotiQty = Math.max(0, notiQty); // Ensure non-negative
+      const { notiQtyPOS } = await form.validateFields();
+      const updatedNotiQty = Math.max(0, notiQtyPOS); // Ensure non-negative
+
+
+        // return;
 
       await updateProduct({
         variables: {
-          data: { notiQty: updatedNotiQty },
+          data: { notiQtyPOS: updatedNotiQty },
           where: { id: product.id },
         },
       });
@@ -52,7 +55,7 @@ const NotificationStockLow: React.FC<Props> = ({ product }) => {
       }}
     >
       <Text strong style={{ fontSize: 16, color: "#2E93fA" }}>
-        ກຳນົດການແຈ້ງເຕືອນສິນຄ້າໝົດສະຕ໋ອກຫຼັງ
+        ກຳນົດການແຈ້ງເຕືອນສິນຄ້າໝົດຂາຍໜ້າຮ້ານ
       </Text>
 
       <Form
@@ -61,7 +64,7 @@ const NotificationStockLow: React.FC<Props> = ({ product }) => {
         initialValues={{ notiQty: 0 }}
       >
         <Form.Item
-          name="notiQty"
+          name="notiQtyPOS"
           label="ຈຳນວນແຈ້ງເຕືອນ (<)"
           rules={[
             { required: true, message: "ກະລຸນາປ້ອນຈຳນວນແຈ້ງເຕືອນ" },
@@ -93,4 +96,4 @@ const NotificationStockLow: React.FC<Props> = ({ product }) => {
   );
 };
 
-export default NotificationStockLow;
+export default NotificationStockLowSalePOS;

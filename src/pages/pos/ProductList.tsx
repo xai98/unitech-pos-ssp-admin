@@ -81,7 +81,6 @@ const ProductList: React.FC<ProductData> = ({
 
       setNewOrderList(updatedList);
     } else {
-      // console.log("product---->", product)
 
       const newOrder = {
         productId: product?.productId?.id,

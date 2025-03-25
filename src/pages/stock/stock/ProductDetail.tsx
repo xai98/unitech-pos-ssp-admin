@@ -12,6 +12,7 @@ import OpenSaleProduct from "./component/OpenSaleProduct";
 import CommissionSetting from "./component/CommissionSetting";
 import CreateProduct from "./interface/CreateProduct";
 import StockCenterForm from "../../../components/stockCenter/stockCenter/StockCenterForm";
+import NotificationStockLowSalePOS from "./component/NotificationStockLowSalePOS";
 
 const { Title, Text } = Typography;
 
@@ -150,6 +151,9 @@ const ProductDetail: React.FC = () => {
               <Row gutter={[16, 16]}>
                 <Col xs={24} md={12}>
                   <NotificationStockLow product={product} />
+                </Col>
+                <Col xs={24} md={12}>
+                  <NotificationStockLowSalePOS product={product} />
                 </Col>
                 <Col xs={24} md={12}>
                   <OpenSaleProduct product={product} setProduct={setProduct} />

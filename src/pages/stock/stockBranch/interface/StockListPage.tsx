@@ -376,7 +376,7 @@ const StockListPage: React.FC<Props> = ({ selectBranch }) => {
   return (
     <Container>
       <Header>
-        <Title>ສິນຄ້າທີ່ນຳຂື້ນໜ້າຂາຍ</Title>
+        <Title>ສິນຄ້າໜ້າຂາຍໜ້າຮ້ານ</Title>
         <ActionButton onClick={() => setIsExport(true)}>
           ດາວໂຫລດ Excel
         </ActionButton>

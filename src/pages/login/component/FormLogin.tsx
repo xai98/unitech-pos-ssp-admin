@@ -85,7 +85,6 @@ const FormLogin: React.FC = () => {
         <ButtonAction
           size="large"
           label="ເຂົ້າສູ່ລະບົບ"
-          onClick={() => console.log("Clicked")}
           htmlType="submit"
           type="primary"
           style={{ backgroundColor: "#1976d2" }}

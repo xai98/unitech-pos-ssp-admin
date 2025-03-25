@@ -19,12 +19,6 @@ interface ReportProps {
 
 const SummaryReport: React.FC<ReportProps> = ({ reportOrder,reportChange }) => {
 
-  
-
-  // console.log("reportOrder?.totalCashLak--->", reportOrder?.totalCashLak)
-  // console.log("reportOrder?.totalSendBack --->", reportOrder?.totalSendBack )
-  // console.log("reportChange?.totalCashLak--->", reportChange?.totalCashLak)
-  // console.log("reportChange?.send_back_customer--->", reportChange?.send_back_customer)
 
 
   return (
