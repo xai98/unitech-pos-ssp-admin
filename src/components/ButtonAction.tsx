@@ -9,7 +9,7 @@ interface InteractiveButton {
   htmlType?: "button" | "submit" | "reset";
   type?: "primary" | "dashed" | "link" | "text" | "default";
   style?: React.CSSProperties;
-  color?: "red" | "green" | "blue" | "pink" | "black" | 'gray';
+  color?: "red" | "green" | "blue" | "pink" | "black" | 'gray' | 'white';
   size?: "small" | "middle" | "large";
   backgroundColor?: string;
   icon?:any;

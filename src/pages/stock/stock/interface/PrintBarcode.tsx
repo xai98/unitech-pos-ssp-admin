@@ -188,6 +188,7 @@ const PrintContent: React.FC<PrintContentProps> = ({
 }) => {
 
 
+
   return (
     <div>
      {Array(qtyPrint)
@@ -225,7 +226,7 @@ const PrintContent: React.FC<PrintContentProps> = ({
                   {formatNumber(data?.price_sale || 0)} ກີບ
                 </span>
                 <img
-                  alt="Barcode Generator TEC-IT"
+                  alt="easy-order-pos"
                   src={`https://barcode.tec-it.com/barcode.ashx?data=${data?.barcode}&code=EAN13`}
                   style={{ width: "100px", height: "40px" }}
                 />

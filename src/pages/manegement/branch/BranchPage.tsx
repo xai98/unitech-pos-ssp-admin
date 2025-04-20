@@ -107,9 +107,9 @@ function BranchPage() {
             onClick={handleCreate}
             htmlType="button"
             icon={<PlusOutlined />}
-            style={{backgroundColor:"#eee"}}
-            disabled
-            color="gray"
+            style={{backgroundColor:"green"}}
+            disabled={branchData?.Branchs?.data.length >= 2}
+            color="white"
           />
 
           <Button
@@ -118,6 +118,7 @@ function BranchPage() {
             icon={<TbPackageImport />}
             onClick={handleAddProduct}
             block
+            
           >
             ເພີ່ມສິນຄ້າເຂົ້າສາຂາ
           </Button>

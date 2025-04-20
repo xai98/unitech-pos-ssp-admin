@@ -5,7 +5,7 @@ import { consts } from './index';
 
 const httpLink = new HttpLink({
     // uri: 'http://localhost:7070', // localhost
-    uri: 'https://api-pos.easy-order-lao.com/', // prod
+    uri: 'https://sp-api.easy-order.la/', // prod
 });
 
 // function isTokenExpired(token: string | null) {
